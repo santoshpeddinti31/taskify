@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# 📝 MERN Todo App (Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the **frontend** of a full-stack CRUD application built using **React**. It includes **user authentication** (signup, login, logout), **protected routes**, and a todo management system. The backend is built with **Node.js**, **Express**, and **MongoDB**, and authentication is handled with **JWT and cookies**.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- 🔐 User Signup and Login
+- ✅ JWT-based Authentication with Protected Routes
+- 🧾 Create, Read, Update, Delete (CRUD) Todos
+- 🌐 React Router for Navigation
+- 🧱 Zustand for Global Auth State Management
+- 💅 Tailwind CSS for Styling
 
-### `npm start`
+## 📁 Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+frontend/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── LoginForm.jsx
+│   │   ├── SignupForm.jsx
+│   │   └── RequiredAuth.jsx
+│   ├── pages/
+│   │   ├── LoginPage.jsx
+│   │   ├── SignupPage.jsx
+│   │   ├── LogoutPage.jsx
+│   │   └── TodoPage.jsx
+│   ├── store/
+│   │   └── authStore.js
+│   ├── App.js
+│   └── index.css
+├── .gitignore
+├── package.json
+└── README.md
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🔧 Installation
 
-### `npm test`
+1. **Clone the full project:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/yourusername/mern-todo-app.git
+cd mern-todo-app/frontend
+```
 
-### `npm run build`
+2. **Install dependencies:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Start the development server:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm run dev
+# or
+npm start
+```
 
-### `npm run eject`
+Make sure your **backend server is running** at `http://localhost:8000` or update the API URL in your axios calls accordingly.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🧠 Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **React** – Frontend Library
+- **React Router DOM** – Routing
+- **Zustand** – State Management
+- **Tailwind CSS** – UI Styling
+- **Axios** – API Communication
+- **JWT** – Token-based Authentication (via cookies)
+- **Express + MongoDB** – (Backend, in another folder)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔒 Auth Flow
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- User signs up or logs in via forms.
+- JWT is created and stored in **HttpOnly cookie** by backend.
+- `authStore.js` manages the login status using Zustand.
+- `RequireAuth.jsx` guards protected routes (`/` → TodoPage).
+- Logout clears the cookie and updates auth state.
 
-## Learn More
+## 🔗 Routing Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| Path      | Component  | Protected |
+| --------- | ---------- | --------- |
+| `/`       | TodoPage   | ✅ Yes    |
+| `/login`  | LoginPage  | ❌ No     |
+| `/signup` | SignupPage | ❌ No     |
+| `/logout` | LogoutPage | ✅ Yes    |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🌍 Environment Setup
 
-### Code Splitting
+No `.env` needed on the frontend, unless you're using a proxy or want to store the API base URL. If needed:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```env
+VITE_API_URL=http://localhost:8000
+```
 
-### Analyzing the Bundle Size
+Use it like:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```js
+axios.get(`${import.meta.env.VITE_API_URL}/todos`);
+```
 
-### Making a Progressive Web App
+## 🛠 Improvements Ideas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Add loading and error UI
+- Add edit mode for todos
+- Form validations
+- Token refresh mechanism
+- Responsive design
 
-### Advanced Configuration
+## 📸 Screenshots
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 👨‍💻 Author
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Santosh Peddinti**  
+📧 santoshpeddinti@gmail.com
